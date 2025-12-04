@@ -1,889 +1,291 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head><meta name="monetag" content="a4ea04475bc3182761066f30f27e3193">
-    <meta charset="UTF-8" />
-    <title>AI Trend Hub – AI News & Tools</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta
-      name="description"
-      content="AI Trend Hub – Daily AI news, tools, and guides for creators and entrepreneurs."
-    />
-
-    <!-- Simple modern UI with CSS only -->
-    <style>
-      :root {
-        --bg: #050816;
-        --bg-alt: #0b1020;
-        --card: #0f172a;
-        --accent: #38bdf8;
-        --accent-soft: rgba(56, 189, 248, 0.15);
-        --text: #e5e7eb;
-        --muted: #9ca3af;
-        --border: #1f2937;
-        --danger: #fb7185;
-        --radius-lg: 18px;
-        --radius-sm: 999px;
-        --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.8);
-        --max-width: 1120px;
-      }
-
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
-
-      body {
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
-          "Segoe UI", sans-serif;
-        background: radial-gradient(circle at top, #1e293b 0, #020617 55%);
-        color: var(--text);
-        -webkit-font-smoothing: antialiased;
-      }
-
-      a {
-        color: inherit;
-        text-decoration: none;
-      }
-
-      .page {
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-      }
-
-      .shell {
-        width: 100%;
-        max-width: var(--max-width);
-        margin: 0 auto;
-        padding: 18px 16px 80px;
-      }
-
-      /* NAVBAR */
-      .nav {
-        position: sticky;
-        top: 0;
-        z-index: 40;
-        backdrop-filter: blur(18px);
-        background: linear-gradient(
-          to bottom,
-          rgba(15, 23, 42, 0.92),
-          rgba(15, 23, 42, 0.75),
-          transparent
-        );
-      }
-
-      .nav-inner {
-        max-width: var(--max-width);
-        margin: 0 auto;
-        padding: 10px 16px 6px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 10px;
-      }
-
-      .nav-left {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-      }
-
-      .logo-dot {
-        width: 26px;
-        height: 26px;
-        border-radius: 999px;
-        background: radial-gradient(circle at 30% 30%, #e5e7eb, #38bdf8);
-        box-shadow: 0 0 20px rgba(56, 189, 248, 0.7);
-      }
-
-      .nav-title {
-        font-size: 17px;
-        font-weight: 700;
-        letter-spacing: 0.03em;
-      }
-
-      .nav-pill {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        padding: 4px 10px;
-        border-radius: 999px;
-        background: rgba(15, 23, 42, 0.9);
-        border: 1px solid rgba(56, 189, 248, 0.35);
-        font-size: 11px;
-        color: var(--muted);
-        white-space: nowrap;
-      }
-
-      .nav-pill-dot {
-        width: 7px;
-        height: 7px;
-        border-radius: 999px;
-        background: #34d399;
-        box-shadow: 0 0 10px rgba(52, 211, 153, 0.8);
-      }
-
-      .nav-links {
-        display: flex;
-        gap: 12px;
-        font-size: 13px;
-      }
-
-      .nav-link {
-        padding: 6px 10px;
-        border-radius: 999px;
-        color: var(--muted);
-        transition: all 0.18s ease;
-      }
-
-      .nav-link:hover {
-        color: #f9fafb;
-        background: rgba(15, 23, 42, 0.9);
-      }
-
-      .nav-cta {
-        border-radius: 999px;
-        padding: 7px 13px;
-        background: linear-gradient(135deg, #38bdf8, #6366f1);
-        font-size: 13px;
-        font-weight: 600;
-        color: #0b1120;
-        box-shadow: 0 12px 25px rgba(37, 99, 235, 0.5);
-        border: none;
-      }
-
-      /* HERO */
-      .hero {
-        margin-top: 14px;
-        padding: 18px 16px 18px;
-        border-radius: 24px;
-        background: radial-gradient(circle at top left, #1d283a 0, #020617 60%);
-        box-shadow: var(--shadow-soft);
-        border: 1px solid rgba(148, 163, 184, 0.32);
-        position: relative;
-        overflow: hidden;
-      }
-
-      .hero-glow {
-        position: absolute;
-        right: -80px;
-        top: -80px;
-        width: 220px;
-        height: 220px;
-        background: radial-gradient(circle, rgba(56, 189, 248, 0.75), transparent);
-        opacity: 0.45;
-        filter: blur(12px);
-      }
-
-      .hero-tag {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        padding: 4px 10px;
-        border-radius: 999px;
-        background: rgba(15, 23, 42, 0.9);
-        border: 1px solid rgba(56, 189, 248, 0.4);
-        font-size: 11px;
-        color: var(--muted);
-        margin-bottom: 10px;
-      }
-
-      .hero-tag-badge {
-        padding: 2px 8px;
-        border-radius: 999px;
-        background: rgba(56, 189, 248, 0.1);
-        color: #7dd3fc;
-        font-size: 10px;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-      }
-
-      .hero-title {
-        font-size: 32px;
-        line-height: 1.1;
-        font-weight: 800;
-        letter-spacing: -0.03em;
-        margin-bottom: 10px;
-      }
-
-      .hero-title span {
-        background: linear-gradient(135deg, #38bdf8, #a855f7);
-        -webkit-background-clip: text;
-        color: transparent;
-      }
-
-      .hero-sub {
-        font-size: 14px;
-        color: var(--muted);
-        max-width: 430px;
-      }
-
-      .hero-sub strong {
-        color: #e5e7eb;
-        font-weight: 600;
-      }
-
-      .hero-bottom {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: space-between;
-        gap: 12px;
-        margin-top: 16px;
-      }
-
-      .hero-metrics {
-        display: flex;
-        gap: 14px;
-        font-size: 11px;
-        color: var(--muted);
-      }
-
-      .hero-metric {
-        padding-left: 10px;
-        border-left: 1px solid rgba(148, 163, 184, 0.4);
-      }
-
-      .hero-metric strong {
-        display: block;
-        font-size: 14px;
-        color: #e5e7eb;
-      }
-
-      .hero-cta-row {
-        display: flex;
-        gap: 8px;
-      }
-
-      .hero-cta-primary {
-        border-radius: 999px;
-        padding: 8px 16px;
-        background: linear-gradient(135deg, #38bdf8, #22c55e);
-        font-size: 13px;
-        font-weight: 600;
-        color: #020617;
-        border: none;
-        box-shadow: 0 15px 30px rgba(34, 197, 94, 0.5);
-      }
-
-      .hero-cta-secondary {
-        border-radius: 999px;
-        padding: 8px 14px;
-        background: rgba(15, 23, 42, 0.9);
-        color: var(--muted);
-        border: 1px solid rgba(148, 163, 184, 0.6);
-        font-size: 13px;
-      }
-
-      /* LAYOUT GRID */
-      .section {
-        margin-top: 26px;
-      }
-
-      .grid {
-        display: grid;
-        grid-template-columns: minmax(0, 2fr) minmax(0, 1.1fr);
-        gap: 18px;
-      }
-
-      @media (max-width: 768px) {
-        .shell {
-          padding-inline: 14px;
-        }
-        .grid {
-          grid-template-columns: minmax(0, 1fr);
-        }
-        .nav-links {
-          display: none;
-        }
-        .hero {
-          padding-inline: 14px;
-        }
-      }
-
-      /* SECTION HEADERS */
-      .section-header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: 10px;
-      }
-
-      .section-title {
-        font-size: 18px;
-        font-weight: 700;
-      }
-
-      .section-kicker {
-        font-size: 11px;
-        color: var(--muted);
-      }
-
-      /* CARDS */
-      .card {
-        border-radius: var(--radius-lg);
-        background: var(--bg-alt);
-        border: 1px solid var(--border);
-        padding: 14px 14px 12px;
-        box-shadow: 0 12px 25px rgba(15, 23, 42, 0.65);
-      }
-
-      .card + .card {
-        margin-top: 10px;
-      }
-
-      .badge {
-        display: inline-flex;
-        align-items: center;
-        padding: 2px 9px;
-        border-radius: var(--radius-sm);
-        font-size: 10px;
-        border: 1px solid rgba(148, 163, 184, 0.6);
-        color: var(--muted);
-      }
-
-      .badge--blue {
-        border-color: rgba(56, 189, 248, 0.6);
-        background: rgba(15, 23, 42, 0.9);
-        color: #7dd3fc;
-      }
-
-      .badge-dot {
-        width: 7px;
-        height: 7px;
-        border-radius: 999px;
-        background: #38bdf8;
-        margin-right: 6px;
-      }
-
-      .card-title {
-        margin-top: 7px;
-        font-size: 15px;
-        font-weight: 600;
-      }
-
-      .card-meta {
-        font-size: 11px;
-        color: var(--muted);
-        margin-top: 2px;
-      }
-
-      .card-text {
-        font-size: 12px;
-        color: var(--muted);
-        margin-top: 6px;
-        line-height: 1.5;
-      }
-
-      .chip-row {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 6px;
-        margin-top: 8px;
-      }
-
-      .chip {
-        font-size: 10px;
-        padding: 3px 8px;
-        border-radius: 999px;
-        border: 1px solid rgba(148, 163, 184, 0.5);
-        color: var(--muted);
-        background: rgba(15, 23, 42, 0.7);
-      }
-
-      .card-footer {
-        margin-top: 10px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        font-size: 11px;
-        color: var(--muted);
-      }
-
-      .read-link {
-        font-size: 11px;
-        color: #7dd3fc;
-      }
-
-      /* TOOLS */
-      .tools-grid {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-      }
-
-      .tool-card {
-        border-radius: 14px;
-        padding: 10px 11px;
-        background: #020617;
-        border: 1px solid rgba(30, 64, 175, 0.8);
-      }
-
-      .tool-head {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 10px;
-      }
-
-      .tool-name {
-        font-size: 13px;
-        font-weight: 600;
-      }
-
-      .tool-tag {
-        font-size: 10px;
-        padding: 3px 8px;
-        border-radius: 999px;
-        background: rgba(37, 99, 235, 0.15);
-        color: #93c5fd;
-        border: 1px solid rgba(59, 130, 246, 0.7);
-      }
-
-      .tool-desc {
-        font-size: 11px;
-        color: var(--muted);
-        margin-top: 5px;
-      }
-
-      .tool-footer {
-        margin-top: 8px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        font-size: 10px;
-        color: var(--muted);
-      }
-
-      .tool-badge {
-        padding: 3px 8px;
-        border-radius: 999px;
-        background: rgba(15, 23, 42, 0.9);
-        border: 1px solid rgba(148, 163, 184, 0.7);
-      }
-
-      .btn-visit {
-        border-radius: 999px;
-        padding: 5px 10px;
-        background: linear-gradient(135deg, #38bdf8, #6366f1);
-        color: #020617;
-        font-size: 11px;
-        font-weight: 600;
-        border: none;
-      }
-
-      /* FOOTER SECTIONS */
-      .footer {
-        border-top: 1px solid #111827;
-        margin-top: 32px;
-        padding-top: 18px;
-        font-size: 11px;
-        color: var(--muted);
-      }
-
-      .footer-grid {
-        display: grid;
-        grid-template-columns: 1.4fr 1.3fr 1.3fr;
-        gap: 16px;
-      }
-
-      @media (max-width: 768px) {
-        .footer-grid {
-          grid-template-columns: 1fr;
-        }
-      }
-
-      .footer-title {
-        font-size: 13px;
-        font-weight: 600;
-        margin-bottom: 6px;
-        color: #e5e7eb;
-      }
-
-      .footer-link {
-        display: block;
-        margin-top: 4px;
-        color: var(--muted);
-      }
-
-      .footer-link:hover {
-        color: #e5e7eb;
-      }
-    </style>
-  </head>
-<script src="https://quge5.com/88/tag.min.js" data-zone="189521" async data-cfasync="false"></script>
-  <body>
+<head><meta name="monetag" content="a4ea04475bc3182761066f30f27e3193">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI Trend Hub – Discover Latest AI Tools & Tech Trends</title>
+  <meta name="description" content="Explore the latest AI tools and services. From chat insights to Web AI, providing you with comprehensive AI technical recommendations, updates, and industry news." />
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#fff;color:#1a1a1a;line-height:1.6;}
+    a{text-decoration:none;color:inherit;}
     
-            <a href="#news" class="nav-link">News</a>
-            <a href="#tools" class="nav-link">Tools</a>
-            <a href="#guides" class="nav-link">Guides</a>
-            <a href="#about" class="nav-link">About</a>
-            <a href="#contact" class="nav-link">Contact<div class="tools-grid">
-  <!-- ChatGPT -->
-  <div class="tool-card">
-    <div class="tool-head">
-      <div>
-        <a href="/chatgpt.html" class="tool-name">ChatGPT</a>
-        <span class="tool-tag">Writing & research</span>
-      </div>
+    /* Header */
+    .header{background:#fff;border-bottom:1px solid #e5e5e5;padding:12px 0;position:sticky;top:0;z-index:100;}
+    .header-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 16px;}
+    .logo{display:flex;align-items:center;gap:8px;font-size:18px;font-weight:700;color:#1a1a1a;}
+    .logo-icon{width:32px;height:32px;background:linear-gradient(135deg,#667eea,#764ba2);border-radius:8px;}
+    .nav{display:flex;gap:32px;font-size:14px;}
+    .nav a{color:#666;transition:color 0.2s;}
+    .nav a:hover{color:#667eea;}
+    
+    /* Hero */
+    .hero{text-align:center;padding:80px 16px 60px;max-width:900px;margin:0 auto;}
+    .hero h1{font-size:48px;font-weight:800;margin-bottom:16px;line-height:1.2;}
+    .hero h1 .highlight{background:linear-gradient(135deg,#667eea,#764ba2);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+    .hero p{font-size:16px;color:#666;margin-bottom:32px;max-width:700px;margin-left:auto;margin-right:auto;}
+    .btn-primary{display:inline-block;padding:14px 32px;background:#4f46e5;color:#fff;border-radius:8px;font-weight:600;font-size:15px;transition:all 0.2s;}
+    .btn-primary:hover{background:#4338ca;transform:translateY(-2px);box-shadow:0 8px 20px rgba(79,70,229,0.3);}
+    
+    /* Stats */
+    .stats{display:flex;justify-content:center;gap:64px;padding:40px 16px;max-width:800px;margin:0 auto;border-bottom:1px solid #e5e5e5;}
+    .stat{text-align:center;}
+    .stat-number{font-size:32px;font-weight:800;color:#1a1a1a;display:block;}
+    .stat-label{font-size:13px;color:#666;margin-top:4px;}
+    
+    /* Section */
+    .section{padding:60px 16px;max-width:1200px;margin:0 auto;}
+    .section-title{font-size:32px;font-weight:800;text-align:center;margin-bottom:12px;}
+    .section-desc{text-align:center;color:#666;font-size:15px;margin-bottom:48px;max-width:600px;margin-left:auto;margin-right:auto;}
+    
+    /* Tools Grid */
+    .tools-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;}
+    .tool-card{background:#fff;border:1px solid #e5e5e5;border-radius:12px;padding:24px;transition:all 0.2s;}
+    .tool-card:hover{box-shadow:0 8px 24px rgba(0,0,0,0.08);border-color:#667eea;}
+    .tool-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;}
+    .tool-logo{width:48px;height:48px;background:linear-gradient(135deg,#667eea,#764ba2);border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:18px;}
+    .tool-badge{font-size:11px;padding:4px 10px;background:#f3f4f6;border-radius:12px;color:#666;}
+    .tool-name{font-size:18px;font-weight:700;margin-bottom:8px;}
+    .tool-desc{font-size:14px;color:#666;margin-bottom:16px;line-height:1.6;}
+    .tool-meta{display:flex;align-items:center;gap:16px;font-size:12px;color:#999;margin-bottom:16px;}
+    .tool-footer{display:flex;align-items:center;justify-content:space-between;}
+    .tool-price{font-size:13px;font-weight:600;color:#1a1a1a;}
+    .btn-tool{padding:8px 20px;background:#4f46e5;color:#fff;border-radius:6px;font-size:13px;font-weight:600;transition:all 0.2s;}
+    .btn-tool:hover{background:#4338ca;}
+    
+    /* Why Section */
+    .why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:32px;margin-top:48px;}
+    .why-card{text-align:center;}
+    .why-icon{width:64px;height:64px;margin:0 auto 16px;background:linear-gradient(135deg,#667eea20,#764ba220);border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:28px;}
+    .why-title{font-size:18px;font-weight:700;margin-bottom:8px;}
+    .why-desc{font-size:14px;color:#666;line-height:1.6;}
+    
+    /* CTA Section */
+    .cta-section{background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;text-align:center;padding:80px 16px;margin-top:60px;}
+    .cta-section h2{font-size:36px;font-weight:800;margin-bottom:16px;}
+    .cta-section p{font-size:16px;opacity:0.95;margin-bottom:32px;max-width:700px;margin-left:auto;margin-right:auto;}
+    .cta-buttons{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+    .btn-white{background:#fff;color:#667eea;padding:14px 32px;border-radius:8px;font-weight:600;font-size:15px;}
+    .btn-outline{background:transparent;color:#fff;border:2px solid #fff;padding:12px 32px;border-radius:8px;font-weight:600;font-size:15px;}
+    
+    /* Footer */
+    .footer{background:#1a1a1a;color:#999;padding:48px 16px 24px;}
+    .footer-inner{max-width:1200px;margin:0 auto;}
+    .footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:32px;margin-bottom:32px;}
+    .footer-col h3{color:#fff;font-size:14px;font-weight:700;margin-bottom:16px;}
+    .footer-col ul{list-style:none;}
+    .footer-col li{margin-bottom:10px;font-size:13px;}
+    .footer-col a:hover{color:#667eea;}
+    .footer-bottom{border-top:1px solid #333;padding-top:24px;text-align:center;font-size:13px;}
+    
+    @media(max-width:768px){
+      .hero h1{font-size:36px;}
+      .stats{flex-direction:column;gap:24px;}
+      .nav{display:none;}
+    }
+  </style>
+</head>
+  <script src="https://quge5.com/88/tag.min.js" data-zone="189521" async data-cfasync="false"></script>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-inner">
+      <a href="/" class="logo">
+        <div class="logo-icon"></div>
+        AI Trend Hub
+      </a>
+      <nav class="nav">
+        <a href="#home">Home</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#news">Industry News</a>
+        <a href="#contact">Contact</a>
+      </nav>
     </div>
-    <p class="tool-desc">
-      Conversational AI assistant used to brainstorm ideas, draft scripts, outlines, captions, and clean up messy notes in seconds.
-    </p>
-    <div class="tool-footer">
-      <span class="tool-badge">Best for: scripts & content ideas</span>
-      <a href="/chatgpt.html" class="read-link">Open full ChatGPT guide →</a>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1>Discover Latest <span class="highlight">AI Tools</span><br>Lead Tech Trends</h1>
+    <p>Explore the latest AI tools and services. From chat insights to Web AI, from Gamer Titan to AI-driven workbooks, providing you with comprehensive AI technical recommendations, updates, and industry news.</p>
+    <a href="#tools" class="btn-primary">Explore AI Tools</a>
+  </section>
+
+  <!-- Stats -->
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-number">500+</span>
+      <span class="stat-label">AI Tools</span>
+    </div>
+    <div class="stat">
+      <span class="stat-number">10K+</span>
+      <span class="stat-label">Active Users</span>
+    </div>
+    <div class="stat">
+      <span class="stat-number">100K+</span>
+      <span class="stat-label">Monthly Visits</span>
     </div>
   </div>
 
-  <!-- Claude -->
-  <div class="tool-card">
-    <div class="tool-head">
-      <div>
-        <a href="/claude.html" class="tool-name">Claude</a>
-        <span class="tool-tag">Deep writing & analysis</span>
-      </div>
-    </div>
-    <p class="tool-desc">
-      AI model focused on long, thoughtful outputs – great for research summaries, emails, documents, and complex reasoning tasks.
-    </p>
-    <div class="tool-footer">
-      <span class="tool-badge">Best for: long‑form & strategy</span>
-      <a href="/claude.html" class="read-link">Open full Claude guide →</a>
-    </div>
-  </div>
-
-  <!-- Midjourney -->
-  <div class="tool-card">
-    <div class="tool-head">
-      <div>
-        <a href="/midjourney.html" class="tool-name">Midjourney</a>
-        <span class="tool-tag">Image generation</span>
-      </div>
-    </div>
-    <p class="tool-desc">
-      Artistic image generator that turns text prompts into bold, eye‑catching visuals for thumbnails, ads, and concept art.[web:246][web:249]
-    </p>
-    <div class="tool-footer">
-      <span class="tool-badge">Best for: thumbnails & ads</span>
-      <a href="/midjourney.html" class="read-link">Open full Midjourney guide →</a>
-    </div>
-  </div>
-
-  <!-- DALL·E -->
-  <div class="tool-card">
-    <div class="tool-head">
-      <div>
-        <a href="/dalle.html" class="tool-name">DALL·E</a>
-        <span class="tool-tag">Image generation</span>
-      </div>
-    </div>
-    <p class="tool-desc">
-      Image model that can create, edit, or extend images from natural‑language prompts or simple sketches, integrated with many apps.[web:243][web:248]
-    </p>
-    <div class="tool-footer">
-      <span class="tool-badge">Best for: product shots & edits</span>
-      <a href="/dalle.html" class="read-link">Open full DALL·E guide →</a>
-    </div>
-  </div>
-
-  <!-- Sora 2 -->
-  <div class="tool-card">
-    <div class="tool-head">
-      <div>
-        <a href="/sora2.html" class="tool-name">Sora 2</a>
-        <span class="tool-tag">Text‑to‑video</span>
-      </div>
-    </div>
-    <p class="tool-desc">
-      Next‑generation text‑to‑video model that creates cinematic scenes, ads, and story concepts directly from your script or prompt.[web:247][web:259]
-    </p>
-    <div class="tool-footer">
-      <span class="tool-badge">Best for: concept videos & ads</span>
-      <a href="/sora2.html" class="read-link">Open full Sora 2 guide →</a>
-    </div>
-  </div>
-
-  <!-- Runway -->
-  <div class="tool-card">
-    <div class="tool-head">
-      <div>
-        <a href="/runway.html" class="tool-name">Runway</a>
-        <span class="tool-tag">Video editing & AI video</span>
-      </div>
-    </div>
-    <p class="tool-desc">
-      Browser‑based editor with AI tools for background removal, generative video, motion tracking, and fast content production.[web:242][web:248]
-    </p>
-    <div class="tool-footer">
-      <span class="tool-badge">Best for: YouTube & reels</span>
-      <a href="/runway.html" class="read-link">Open full Runway guide →</a>
-    </div>
-  </div>
-
-  <!-- Descript -->
-  <div class="tool-card">
-    <div class="tool-head">
-      <div>
-        <a href="/descript.html" class="tool-name">Descript</a>
-        <span class="tool-tag">Podcast & video editing</span>
-      </div>
-    </div>
-    <p class="tool-desc">
-      Edit podcasts and videos by editing text, with AI cleanup, filler‑word removal, overdub voice, and simple timeline controls.[web:242][web:248]
-    </p>
-    <div class="tool-footer">
-      <span class="tool-badge">Best for: podcasts & tutorials</span>
-      <a href="/descript.html" class="read-link">Open full Descript guide →</a>
-    </div>
-  </div>
-
-  <!-- OpusClip -->
-  <div class="tool-card">
-    <div class="tool-head">
-      <div>
-        <a href="/opusclip.html" class="tool-name">OpusClip</a>
-        <span class="tool-tag">Short‑form clipping</span>
-      </div>
-    </div>
-    <p class="tool-desc">
-      AI tool that turns long videos into viral‑style short clips, adding dynamic captions, zooms, and automatic highlight detection.[web:242][web:248]
-    </p>
-    <div class="tool-footer">
-      <span class="tool-badge">Best for: TikTok, Reels, Shorts</span>
-      <a href="/opusclip.html" class="read-link">Open full OpusClip guide →</a>
-    </div>
-  </div>
-
-  <!-- Zapier -->
-  <div class="tool-card">
-    <div class="tool-head">
-      <div>
-        <a href="/zapier.html" class="tool-name">Zapier</a>
-        <span class="tool-tag">Workflow automation</span>
-      </div>
-    </div>
-    <p class="tool-desc">
-      No‑code automation platform that connects AI tools with your apps to move data, send messages, and trigger tasks automatically.[web:243][web:248]
-    </p>
-    <div class="tool-footer">
-      <span class="tool-badge">Best for: business workflows</span>
-      <a href="/zapier.html" class="read-link">Open full Zapier guide →</a>
-    </div>
-  </div>
-
-  <!-- n8n -->
-  <div class="tool-card">
-    <div class="tool-head">
-      <div>
-        <a href="/n8n.html" class="tool-name">n8n</a>
-        <span class="tool-tag">Advanced automation</span>
-      </div>
-    </div>
-    <p class="tool-desc">
-      Fair‑code automation platform for building complex, self‑hosted workflows that combine APIs, AI models, and custom logic.[web:245][web:257]
-    </p>
-    <div class="tool-footer">
-      <span class="tool-badge">Best for: power users & agencies</span>
-      <a href="/n8n.html" class="read-link">Open full n8n guide →</a>
-    </div>
-  </div>
-  </div></a>
-            <button class="nav-cta" onclick="document.getElementById('tools').scrollIntoView({behavior:'smooth'})">
-              Explore tools
-            </button>
-          </div>
+  <!-- Featured Tools -->
+  <section class="section" id="tools">
+    <h2 class="section-title">Featured AI Tools</h2>
+    <p class="section-desc">Discover the most popular and innovative AI tools to power your creativity, streamline your work, and stay ahead in the AI revolution.</p>
+    
+    <div class="tools-grid">
+      <!-- Tool 1 -->
+      <div class="tool-card">
+        <div class="tool-header">
+          <div class="tool-logo">MJ</div>
+          <span class="tool-badge">Generative</span>
         </div>
-      </header>
+        <div class="tool-name">Midjourney</div>
+        <p class="tool-desc">A tool to help users turn text descriptions into amazing visual artworks using state-of-the-art AI technology.</p>
+        <div class="tool-meta">
+          <span>⭐ 4.8</span>
+          <span>10K+ users</span>
+        </div>
+        <div class="tool-footer">
+          <span class="tool-price">Paid • from $10</span>
+          <a href="/midjourney.html" class="btn-tool">Explore</a>
+        </div>
+      </div>
 
-      <main class="shell">
-        <!-- HERO -->
-        <section class="hero" id="top">
-          <div class="hero-glow"></div>
-          <div class="hero-tag">
-            <span class="hero-tag-badge">New</span>
-            Curated AI hub for creators & entrepreneurs
-          </div>
-          <h1 class="hero-title">
-            Stay ahead of the
-            <span>AI trend curve.</span>
-          </h1>
-          <p class="hero-sub">
-            AI Trend Hub tracks the latest
-            <strong>AI news, tools, and workflows</strong> so you can create
-            content faster, launch better products, and never miss an
-            opportunity in the AI wave.
-          </p>
+      <!-- Tool 2 -->
+      <div class="tool-card">
+        <div class="tool-header">
+          <div class="tool-logo">AI</div>
+          <span class="tool-badge">Generative</span>
+        </div>
+        <div class="tool-name">Leonardo.Ai</div>
+        <p class="tool-desc">A revolutionary AI platform to inspire, create, and build stunning game assets using text prompts.</p>
+        <div class="tool-meta">
+          <span>⭐ 4.9</span>
+          <span>8K+ users</span>
+        </div>
+        <div class="tool-footer">
+          <span class="tool-price">Paid • from $10</span>
+          <a href="#" class="btn-tool">Explore</a>
+        </div>
+      </div>
 
-          <div class="hero-bottom">
-            <div class="hero-metrics">
-              <div>
-                <strong>Fresh AI insights</strong>
-                <span>Updated as AI tools evolve.</span>
-              </div>
-              <div class="hero-metric">
-                <strong>Tool directory</strong>
-                <span>Handpicked apps for creators.</span>
-              </div>
-            </div>
-            <div class="hero-cta-row">
-              <button
-                class="hero-cta-primary"
-                onclick="document.getElementById('news').scrollIntoView({behavior:'smooth'})"
-              >
-                Read latest AI news
-              </button>
-              <button
-                class="hero-cta-secondary"
-                onclick="document.getElementById('tools').scrollIntoView({behavior:'smooth'})"
-              >
-                Browse AI tools
-              </button>
-            </div>
-          </div>
-        </section>
+      <!-- Tool 3 -->
+      <div class="tool-card">
+        <div class="tool-header">
+          <div class="tool-logo">CP</div>
+          <span class="tool-badge">Generative</span>
+        </div>
+        <div class="tool-name">ChatGPT</div>
+        <p class="tool-desc">A tool to help users turn text descriptions into fascinating dialogues using advanced language models.</p>
+        <div class="tool-meta">
+          <span>⭐ 4.7</span>
+          <span>15K+ users</span>
+        </div>
+        <div class="tool-footer">
+          <span class="tool-price">Free / Paid</span>
+          <a href="/chatgpt.html" class="btn-tool">Explore</a>
+        </div>
+      </div>
 
-        <!-- MAIN GRID -->
-        <div class="section grid" id="news">
-          <!-- NEWS COLUMN -->
-          <div>
-            <div class="section-header">
-              <div>
-                <div class="section-kicker">Latest AI headlines</div>
-                <h2 class="section-title">AI News for Creators</h2>
-              </div>
-            </div>
+      <!-- Tool 4 -->
+      <div class="tool-card">
+        <div class="tool-header">
+          <div class="tool-logo">RW</div>
+          <span class="tool-badge">Generative</span>
+        </div>
+        <div class="tool-name">Runway</div>
+        <p class="tool-desc">A browser-based creative platform for everything AI: from generative video to image-to-video transformations.</p>
+        <div class="tool-meta">
+          <span>⭐ 4.6</span>
+          <span>7K+ users</span>
+        </div>
+        <div class="tool-footer">
+          <span class="tool-price">Free / Paid</span>
+          <a href="/runway.html" class="btn-tool">Explore</a>
+        </div>
+      </div>
+    </div>
 
-            <article class="card">
-              <div class="badge badge--blue">
-                <span class="badge-dot"></span>
-                Model Update · Sora 2
-              </div>
-              <h3 class="card-title">
-                Sora 2 brings more realistic text‑to‑video generation
-              </h3>
-              <p class="card-meta">Better motion, lighting, and story control.</p>
-              <p class="card-text">
-                Open‑source and commercial creators are testing Sora 2 to turn
-                simple prompts into cinematic clips. Improved scene consistency
-                and camera movement make it easier to produce ad‑ready videos
-                with almost no editing.
-              </p>
-              <div class="chip-row">
-                <span class="chip">Text‑to‑video</span>
-                <span class="chip">Short‑form content</span>
-                <span class="chip">Ad creatives</span>
-              </div>
-              <div class="card-footer">
-                <span>Perfect for TikTok & Reels ads.</span>
-                <a href="#tools" class="read-link">See video tools →</a>
-              </div>
-            </article>
+    <div style="text-align:center;margin-top:40px;">
+      <a href="#" class="btn-primary">View All AI Tools</a>
+    </div>
+  </section>
 
-            <article class="card">
-              <div class="badge">
-                Image Editing · 2025
-              </div>
-              <h3 class="card-title">
-                New wave of AI image editors for thumbnails & ads
-              </h3>
-              <p class="card-meta">
-                One‑click clean‑ups, background swaps, and brand‑ready looks.
-              </p>
-              <p class="card-text">
-                Modern AI editors can remove distractions, fix lighting, and
-                apply on‑brand color styles in seconds. That means less time in
-                Photoshop and more time scripting, shooting, and publishing.
-              </p>
-              <div class="chip-row">
-                <span class="chip">YouTube thumbnails</span>
-                <span class="chip">E‑commerce</span>
-                <span class="chip">Brand style</span>
-              </div>
-              <div class="card-footer">
-                <span>Save hours every week on visuals.</span>
-                <span class="read-link">Updated weekly</span>
-              </div>
-            </article>
+  <!-- Why Choose -->
+  <section class="section" style="background:#f9fafb;">
+    <h2 class="section-title">Why Choose AI Trend Hub</h2>
+    <p class="section-desc">We are committed to providing you with the most relevant and cutting-edge AI tools, offering a reliable platform to help you lead in tech trends.</p>
+    
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">🚀</div>
+        <div class="why-title">Real-time tracking of AI technology developments</div>
+        <p class="why-desc">We continuously update our database with the latest AI tools and services, ensuring you stay ahead of the curve.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">✨</div>
+        <div class="why-title">Innovative AI solutions tailored to your needs</div>
+        <p class="why-desc">Whether you're a creator, entrepreneur, or developer, we help you find the right AI solutions for your projects.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">📊</div>
+        <div class="why-title">Cutting-edge AI analysis and market trends</div>
+        <p class="why-desc">Get detailed insights and expert analysis on emerging AI trends, market movements, and industry news.</p>
+      </div>
+    </div>
+  </section>
 
-            <article class="card" id="guides">
-              <div class="badge">
-                Workflows · Playbook
-              </div>
-              <h3 class="card-title">
-                How creators actually use AI in their daily workflow
-              </h3>
-              <p class="card-meta">
-                From idea to script to edit – on autopilot.
-              </p>
-              <p class="card-text">
-                Many solo creators now use AI to brainstorm hooks, draft scripts,
-                summarize research, and generate B‑roll ideas. The best setups
-                connect chat models, image tools, and automation platforms into
-                one smooth pipeline.
-              </p>
-              <div class="chip-row">
-                <span class="chip">Idea → Script</span>
-                <span class="chip">Script → Visuals</span>
-                <span class="chip">Scheduling</span>
-              </div>
-              <div class="card-footer">
-                <span>Turn your AI stack into a real system.</span>
-                <span class="read-link">More playbooks coming soon</span>
-              </div>
-            </article>
-          </div>
+  <!-- CTA -->
+  <section class="cta-section">
+    <h2>Start Your AI Exploration Journey</h2>
+    <p>Discover the latest AI tools, cutting-edge trends, master advanced AI techniques, and access exclusive AI tools and resources all within this comprehensive platform.</p>
+    <div class="cta-buttons">
+      <a href="#tools" class="btn-white">Explore AI Tools</a>
+      <a href="#" class="btn-outline">View Industry News</a>
+    </div>
+  </section>
 
-          <!-- TOOLS COLUMN -->
-          <aside id="tools">
-            <div class="section-header">
-              <div>
-                <div class="section-kicker">Curated for creators</div>
-                <h2 class="section-title">AI Tools Directory</h2>
-              </div>
-            </div>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h3>AI Trend Hub</h3>
+          <p style="font-size:13px;line-height:1.7;margin-top:8px;">Discover the latest AI tools and services that are shaping tomorrow's technology landscape.</p>
+        </div>
+        <div class="footer-col">
+          <h3>PRODUCT</h3>
+          <ul>
+            <li><a href="#tools">AI Tools</a></li>
+            <li><a href="#news">AI News</a></li>
+            <li><a href="#">Guides</a></li>
+            <li><a href="#">Resources</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>COMPANY</h3>
+          <ul>
+            <li><a href="/about.html">About Us</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="/contact.html">Contact</a></li>
+            <li><a href="#">Careers</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>SUPPORT</h3>
+          <ul>
+            <li><a href="#">Help Center</a></li>
+            <li><a href="/terms.html">Terms of Service</a></li>
+            <li><a href="/privacy.html">Privacy Policy</a></li>
+            <li><a href="#">Cookie Settings</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        © 2025 AI Trend Hub. All rights reserved.
+      </div>
+    </div>
+  </footer>
 
-            <div class="tools-grid">
-              <div class="tool-card">
-                <div class="tool-head">
-                  <div>
-                    <div class="tool-name">Midjourney</div>
-                    <span class="tool-tag">Image generation</span>
-                  </div>
-                  <button
-                    class="btn-visit"
-                    onclick="window.open('https://discord.com/invite/midjourney','_blank')"
-                  >
-                    Visit website
-                  </button>
-                </div>
-                <p class="tool-desc">
-                  Artistic image generator that turns text prompts into bold,
-                  eye‑catching visuals ideal for thumbnails, covers, and concept
-                  art.
-                </p>
-                <div class="tool-footer">
-                  <span class="tool-badge">Best for: YouTube, brands</span>
-                  <span>Paid · Discord‑based</span>
-                </div>
-              </div>
-
-              <div class="tool-card">
-                <div class="tool-head">
-                  <div>
-                    <div class="tool-name">DALL·E</div>
-                    <span class="tool-tag">Image generation</span>
-                  </div>
-                  <button
-                    class="btn-visit"
-                    onclick="window.open('https://openai.com/index/dall-e/','_blank')"
-                  >
-                    Visit website
-                  </button>
-                </div>
-                <p class="tool-desc">
-                  Image model from OpenAI that can create, edit, or expand
-                  images based on natural‑language prompts or rough sketches.
-                </p>
-                <div class="tool-footer">
+</body>
+      </html>
