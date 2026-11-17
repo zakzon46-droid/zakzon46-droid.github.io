@@ -1,9 +1,10 @@
 // =====================================================================
 // SCÈNE 1 (0–4 s) — Naissance de l'idée : cercle dessiné + titre.
 // =====================================================================
-import {AbsoluteFill, useCurrentFrame, useVideoConfig, interpolate} from 'remotion';
+import {AbsoluteFill, Sequence, useCurrentFrame, useVideoConfig, interpolate} from 'remotion';
 import {COLORS, FONT, TEXTS} from '../config.js';
 import {EASE_IN_OUT, fadeInOut, pushIn, springIn, KineticWords} from './helpers.jsx';
+import {AudioTrack} from './assets.jsx';
 
 const R = 130;
 const CIRC = 2 * Math.PI * R;
@@ -75,6 +76,9 @@ export const Scene1Idea = ({duration, format}) => {
           </div>
         </AbsoluteFill>
       </div>
+      <Sequence from={6} durationInFrames={36}>
+        <AudioTrack name="whooshIntro" />
+      </Sequence>
     </AbsoluteFill>
   );
 };
