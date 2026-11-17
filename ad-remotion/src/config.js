@@ -70,15 +70,20 @@ export const ASSETS = {
   captureStoreMobile: {file: 'assets/capture-store-mobile.png', ready: false, label: "CAPTURE RÉELLE D'UNE BOUTIQUE (mobile)"},
 };
 
-// --- Audio (libre de droits à fournir) --------------------------------
-// ready:false → aucun rendu audio (le projet tourne sans les fichiers).
+// --- Audio ------------------------------------------------------------
+// SFX : générés automatiquement par `npm run sfx` (scripts/generate-sfx.mjs),
+// qui écrit les .wav dans public/assets/ ET passe ready à true dans ce
+// fichier pour les 6 pistes ci-dessous.
+// Musique : à fournir séparément (libre de droits, ~30 s, sans paroles) ;
+// rester à ready:false jusqu'au dépôt du fichier dans public/assets/.
 export const AUDIO = {
-  music:      {file: 'assets/music.mp3',        ready: false, volume: 0.55},
-  whooshIntro:  {file: 'assets/whoosh-intro.mp3',   ready: false, volume: 0.7},
-  whooshReveal: {file: 'assets/whoosh-reveal.mp3',  ready: false, volume: 0.8},
-  uiPop:        {file: 'assets/ui-pop.mp3',        ready: false, volume: 0.6},
-  whooshShare:  {file: 'assets/whoosh-share.mp3',  ready: false, volume: 0.7},
-  hitLogo:      {file: 'assets/hit-logo.mp3',       ready: false, volume: 0.9},
+  music:        {file: 'assets/music.mp3',        ready: false, volume: 0.55},
+  whooshIntro:  {file: 'assets/whoosh-intro.wav', ready: false, volume: 0.7},
+  whooshReveal: {file: 'assets/whoosh-reveal.wav', ready: false, volume: 0.8},
+  uiPop:        {file: 'assets/ui-pop.wav',       ready: false, volume: 0.6},
+  uiPop2:       {file: 'assets/ui-pop-2.wav',     ready: false, volume: 0.55},
+  whooshShare:  {file: 'assets/whoosh-share.wav', ready: false, volume: 0.7},
+  hitLogo:      {file: 'assets/hit-logo.wav',     ready: false, volume: 0.9},
 };
 
 // Zones sûres 9:16 (UI plateformes + sous-titres) — utilisées pour la mise en page.
