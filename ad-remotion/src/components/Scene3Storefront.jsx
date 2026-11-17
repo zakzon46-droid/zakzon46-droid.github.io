@@ -91,6 +91,9 @@ export const Scene3Storefront = ({duration, format}) => {
         <Sequence from={5} durationInFrames={24}>
           <AudioTrack name="uiPop" />
         </Sequence>
+        <Sequence from={15} durationInFrames={24}>
+          <AudioTrack name="uiPop2" />
+        </Sequence>
       </div>
     </AbsoluteFill>
   );
