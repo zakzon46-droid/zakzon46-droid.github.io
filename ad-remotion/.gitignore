@@ -1,0 +1,6 @@
+# Sorties de rendu et dépendances
+out/
+node_modules/
+
+# Aperçu HTML local de la vidéo (fichier autonome)
+preview.html
