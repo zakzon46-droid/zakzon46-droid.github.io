@@ -1,0 +1,20 @@
+{
+  "name": "utify-ad",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Publicité 30 s UTIFY — Remotion 4, 16:9 et 9:16",
+  "scripts": {
+    "dev": "remotion studio",
+    "preview": "remotion preview src/index.jsx",
+    "render:16x9": "remotion render UtifyAd16x9 out/utify-ad-16x9.mp4 --codec=h264",
+    "render:9x16": "remotion render UtifyAd9x16 out/utify-ad-9x16.mp4 --codec=h264",
+    "still:16x9": "remotion still UtifyAd16x9 out/frame-16x9.png --frame=880",
+    "upgrade": "remotion upgrade"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.220",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "remotion": "4.0.220"
+  }
+}
